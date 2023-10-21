@@ -1,4 +1,6 @@
 #!/usr/bin/env rust-script
+//! https://leetcode.com/problems/contains-duplicate/
+//!
 //! ```cargo
 //! [dependencies]
 //! itertools = "0.11.0"
