@@ -1,13 +1,29 @@
-use itertools::Itertools;
-
-#[allow(dead_code)]
 pub fn contains_duplicate(nums: Vec<i32>) -> bool {
-    // my code
-    // nums.into_iter().duplicates().collect::<Vec<_>>().len() > 0
+    let mut result = false;
 
-    // fixed by clippy
-    !nums.into_iter().duplicates().collect::<Vec<_>>().is_empty()
+    for (i, n) in nums.iter().enumerate() {
+        for (j, m) in nums.iter().enumerate() {
+            if i != j && n == m {
+                result = true;
+                break;
+            }
+        }
+    }
+    result
 }
+
+/*
+ * use itertools::Itertools;
+ *
+ * #[allow(dead_code)]
+ * pub fn contains_duplicate(nums: Vec<i32>) -> bool {
+ *     // my code
+ *     // nums.into_iter().duplicates().collect::<Vec<_>>().len() > 0
+ *
+ *    // fixed by clippy
+ *     !nums.into_iter().duplicates().collect::<Vec<_>>().is_empty()
+ * }
+ */
 
 #[cfg(test)]
 mod s0217_tests {
