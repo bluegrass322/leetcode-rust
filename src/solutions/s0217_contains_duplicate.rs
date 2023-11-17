@@ -1,16 +1,25 @@
-pub fn contains_duplicate(nums: Vec<i32>) -> bool {
-    let mut result = false;
+use std::collections::HashSet;
 
-    for (i, n) in nums.iter().enumerate() {
-        for (j, m) in nums.iter().enumerate() {
-            if i != j && n == m {
-                result = true;
-                break;
-            }
-        }
-    }
-    result
+pub fn contains_duplicate(nums: Vec<i32>) -> bool {
+    let hash_set: HashSet<&i32> = HashSet::from_iter(nums.iter());
+    nums.len() != hash_set.len()
 }
+
+/* Time Limit Exceeded
+ * pub fn contains_duplicate(nums: Vec<i32>) -> bool {
+ *     let mut result = false;
+ *
+ *     for (i, n) in nums.iter().enumerate() {
+ *         for (j, m) in nums.iter().enumerate() {
+ *             if i != j && n == m {
+ *                 result = true;
+ *                 break;
+ *             }
+ *         }
+ *     }
+ *     result
+ * }
+*/
 
 /*
  * use itertools::Itertools;
