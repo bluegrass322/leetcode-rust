@@ -7,7 +7,7 @@ pub fn is_anagram(s: String, t: String) -> bool {
     s_counts == t_counts
 }
 
-fn count_chars(string: &String) -> HashMap<char, i32> {
+fn count_chars(string: &str) -> HashMap<char, i32> {
     let mut hash = HashMap::<char, i32>::new();
 
     for s in string.chars() {
