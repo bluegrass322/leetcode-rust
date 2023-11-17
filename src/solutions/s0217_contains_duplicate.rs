@@ -1,13 +1,39 @@
-use itertools::Itertools;
+use std::collections::HashSet;
+use std::iter::FromIterator;
 
-#[allow(dead_code)]
 pub fn contains_duplicate(nums: Vec<i32>) -> bool {
-    // my code
-    // nums.into_iter().duplicates().collect::<Vec<_>>().len() > 0
-
-    // fixed by clippy
-    !nums.into_iter().duplicates().collect::<Vec<_>>().is_empty()
+    let hash_set: HashSet<&i32> = HashSet::from_iter(nums.iter());
+    nums.len() != hash_set.len()
 }
+
+/* Time Limit Exceeded
+ * pub fn contains_duplicate(nums: Vec<i32>) -> bool {
+ *     let mut result = false;
+ *
+ *     for (i, n) in nums.iter().enumerate() {
+ *         for (j, m) in nums.iter().enumerate() {
+ *             if i != j && n == m {
+ *                 result = true;
+ *                 break;
+ *             }
+ *         }
+ *     }
+ *     result
+ * }
+*/
+
+/*
+ * use itertools::Itertools;
+ *
+ * #[allow(dead_code)]
+ * pub fn contains_duplicate(nums: Vec<i32>) -> bool {
+ *     // my code
+ *     // nums.into_iter().duplicates().collect::<Vec<_>>().len() > 0
+ *
+ *    // fixed by clippy
+ *     !nums.into_iter().duplicates().collect::<Vec<_>>().is_empty()
+ * }
+ */
 
 #[cfg(test)]
 mod s0217_tests {
