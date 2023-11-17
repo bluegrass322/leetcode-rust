@@ -1,3 +1,24 @@
+use std::collections::HashMap;
+
+pub fn is_anagram(s: String, t: String) -> bool {
+    let s_counts = count_chars(&s);
+    let t_counts = count_chars(&t);
+
+    s_counts == t_counts
+}
+
+fn count_chars(string: &String) -> HashMap<char, i32> {
+    let mut hash = HashMap::<char, i32>::new();
+
+    for s in string.chars() {
+        let count = hash.entry(s).or_insert(0);
+        *count += 1;
+    }
+
+    hash
+}
+
+/*
 use itertools::Itertools;
 
 #[allow(dead_code)]
@@ -14,6 +35,7 @@ pub fn is_anagram(s: String, t: String) -> bool {
 
     result
 }
+*/
 
 #[cfg(test)]
 mod s0242_tests {
